@@ -1,4 +1,4 @@
-function [pe, mods] = adaptativo(pe_max, eb_n0, varargin)
+function [pe] = adaptativo(pe_max, eb_n0, varargin)
     % Usa um protocolo de transmissão adaptativo
     % dentre 5 opções:
     % 1. BPSK
@@ -29,12 +29,11 @@ function [pe, mods] = adaptativo(pe_max, eb_n0, varargin)
         pe(i) = cache(5,i);
         for k=1:4
             prob = cache(k,i);
-            if prob < pe_max
+            if prob < pe_max || prob <= cache(5,i)
                 pe(i) = prob;
                 break;
             end
         end
     end
-    mods = 0;
 end
 
