@@ -17,9 +17,11 @@ function [pe] = m_qam(eb_n0, m)
         ipHat_re = 2*max(0, min(l-1, round(0.5*real(y) + (l-1)/2.0))) - (l-1);
         ipHat_im = 2*max(0, min(l-1, round(0.5*imag(y) + (l-1)/2.0))) - (l-1);
         ipHat = ipHat_re + 1i*ipHat_im;
+
+        diff = (ip - ipHat)/2;
         
         % Contagem dos erros para cada valor de eb/n0
-        Erros(k) = size(find(ip - ipHat),2);
+        Erros(k) = sum(abs(real(diff)) + abs(imag(diff)));
     end
-    pe = Erros / Nsimb;
+    pe = Erros / (log2(m) * Nsimb);
 end
