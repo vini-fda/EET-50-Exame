@@ -12,14 +12,11 @@ function [pe] = m_qam(eb_n0, m)
         delta = sqrt(6*es_n0(k)/(m-1));
         
         y = ip + (sqrt(2)/delta) * ruido; % AWGN
-        %display(ip);
-        %display(y);
         
         % demodulação
         ipHat_re = 2*max(0, min(l-1, round(0.5*real(y) + (l-1)/2.0))) - (l-1);
         ipHat_im = 2*max(0, min(l-1, round(0.5*imag(y) + (l-1)/2.0))) - (l-1);
         ipHat = ipHat_re + 1i*ipHat_im;
-        %display(ipHat)
         
         % Contagem dos erros para cada valor de eb/n0
         Erros(k) = size(find(ip - ipHat),2);
