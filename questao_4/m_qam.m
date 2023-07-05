@@ -1,7 +1,6 @@
 function [pe] = m_qam(eb_n0, m)
     % Parametros
-    Nsimb = 10^4;
-    ipHat = zeros(1,Nsimb);
+    Nsimb = 10^6;
     es_n0 = log2(m) * eb_n0;
     l = sqrt(m);
     
