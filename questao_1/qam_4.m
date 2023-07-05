@@ -5,7 +5,7 @@ function [pe] = qam_4(eb_n0)
     N0 = 1.0; % Padronizamos N0=1 sem perda de generalidade
     Es = 2 * N0 * eb_n0;
     
-    Erros = zeros(length(Es));
+    Erros = zeros(1, length(Es));
     for k = 1:length(Es)
         ip = (2*(rand(1,Nsimb)>0.5)-1) + 1i*(2*(rand(1,Nsimb)>0.5)-1);
         s = (1/sqrt(2))*ip; % normalização da energia
