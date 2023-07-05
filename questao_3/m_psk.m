@@ -1,6 +1,6 @@
 function [pe] = m_psk(eb_n0, m)
     % Parametros
-    Nsimb = 5*10^5;
+    Nsimb = 10^6;
     es_n0 = log2(m) * eb_n0;
     
     Erros = zeros(1, length(es_n0));
